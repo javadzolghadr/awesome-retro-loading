@@ -3,7 +3,22 @@
   <meta charset="UTF-8">
   
   <title>retro loading</title>
+<script>
+  // پیدا کردن اولین عنصر با کلاس overlays
+  const overlay = document.querySelector('.overlays');
 
+  // مقدار اولیه --start از مقدار فعلی المنت یا عدد پیش‌فرض
+  let start = parseFloat(getComputedStyle(overlay).getPropertyValue('--start')) || 0;
+
+  // تابع افزایش تدریجی
+  function increaseStart() {
+    start += 0.1; // افزایش با دهم درصد
+    overlay.style.setProperty('--start', start.toFixed(4)); // با دقت چهار رقم اعشار
+  }
+
+  // اجرا شدن تابع هر 100 میلی‌ثانیه (تنظیم کن اگه می‌خوای سریع‌تر یا کندتر شه)
+  setInterval(increaseStart, 100);
+</script>
   
 <style>
 @property --annie {
